@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DolphinAI Image Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        
+        .split-container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .left-panel {
+            flex: 1;
+            background-color: #1f2937;
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .right-panel {
+            flex: 1;
+            background-color: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .left-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 16px;
+        }
+        
+        .author-info h4 {
+            font-size: 16px;
+            margin: 0 0 4px 0;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            margin: 0;
+            opacity: 0.7;
+        }
+        
+        .auth-form-container {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .auth-header {
+            margin-bottom: 36px;
+        }
+        
+        .auth-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 12px;
+        }
+        
+        .auth-subtitle {
+            color: var(--light-text);
+            font-size: 16px;
+        }
+        
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .form-input {
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+        
+        .password-input-wrapper {
+            position: relative;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--light-text);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .remember-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        
+        .remember-checkbox input {
+            width: 16px;
+            height: 16px;
+            accent-color: #4f46e5;
+        }
+        
+        .forgot-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+        
+        .auth-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .auth-btn:hover {
+            background: #4338ca;
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+        
+        .auth-divider::before {
+            margin-right: 16px;
+        }
+        
+        .auth-divider::after {
+            margin-left: 16px;
+        }
+        
+        .social-auth {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .social-btn:hover {
+            background: var(--hover-bg);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--light-text);
+        }
+        
+        .auth-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+        
+        .indicator-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .dot.active {
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .split-container {
+                flex-direction: column;
+            }
+            
+            .left-panel {
+                padding: 40px 24px;
+            }
+            
+            .right-panel {
+                padding: 40px 24px;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="dolphin-2708695_1280.png" alt="Logo" class="logo">
+        <h3>DolphinAi</h3>
+        
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link ">Text to Image</a>
+            <a href="#" class="nav-link">Image to Image</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="developer.html" class="nav-link">Developer</a>
+        </div>
+        <div class="auth-buttons">
+            <button class="btn btn-login"><a href="login.html">Log In</a></button>
+            <button class="btn btn-signup"><a href="register.html">Register</a></button>
+        </div>
+        <button id="mobile-menu-btn" class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div class="split-container">
+        <div class="left-panel">
+            <div class="left-content">
+                <h1 class="hero-title">Manage your AI Images Anywhere</h1>
+                <p class="hero-subtitle">Create stunning visuals with AI and access your creations from anywhere. Perfect for designers, marketers, and creative professionals.</p>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"This AI image generator has completely transformed my creative process. I can now visualize my ideas instantly!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Vinay</h4>
+                            <p>Graphic Designer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="indicator-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="auth-form-container">
+                <div class="auth-header">
+                    <h1 class="auth-title">Welcome back</h1>
+                    <p class="auth-subtitle">Log in to your account to continue</p>
+                </div>
+                
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="youremail@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            Password
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <label class="remember-checkbox">
+                        <input type="checkbox" id="remember">
+                        <span>Remember me</span>
+                    </label>
+                    
+                    <button type="submit" class="auth-btn">
+                        <i class="fas fa-sign-in-alt"></i> Log in
+                    </button>
+                </form>
+                
+                <div class="auth-divider">or continue with</div>
+                
+                <div class="social-auth">
+                    <button class="social-btn">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button class="social-btn">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-footer">
+                    Don't have an account? <a href="register.html" class="auth-link">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const username = email.split('@')[0];
+            
+            // Store username in localStorage
+            localStorage.setItem('loggedInUser', username);
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        });
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html> 

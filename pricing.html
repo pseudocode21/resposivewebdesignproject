@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - DolphinAI Image Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-title {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .pricing-subtitle {
+            font-size: 18px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .pricing-plans {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .pricing-plan {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .pricing-plan.featured {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .pricing-plan.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .plan-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .pricing-plan.featured .plan-header {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .pricing-plan.featured .plan-name,
+        .pricing-plan.featured .plan-description,
+        .pricing-plan.featured .plan-price,
+        .pricing-plan.featured .plan-billing,
+        .pricing-plan.featured .feature-text {
+            color: white;
+        }
+        
+        .plan-description {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+        
+        .plan-price-container {
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .plan-price {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--text-color);
+            line-height: 1;
+        }
+        
+        .plan-price span {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .plan-billing {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-top: 8px;
+        }
+        
+        .plan-features {
+            padding: 24px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 12px;
+        }
+        
+        .pricing-plan.featured .feature-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .feature-text {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        
+        .plan-footer {
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .plan-button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .standard-button {
+            background: transparent;
+            border: 1px solid #4f46e5;
+            color: #4f46e5;
+        }
+        
+        .standard-button:hover {
+            background: rgba(79, 70, 229, 0.1);
+        }
+        
+        .featured-button {
+            background: white;
+            border: none;
+            color: #7c3aed;
+        }
+        
+        .featured-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #10b981;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .comparison-section {
+            margin-top: 80px;
+        }
+        
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .comparison-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .comparison-subtitle {
+            font-size: 16px;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .comparison-table-container {
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            font-weight: 600;
+            color: var(--text-color);
+            background: var(--card-bg);
+            position: sticky;
+            top: 0;
+        }
+        
+        .comparison-table th.featured-column {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .feature-available {
+            color: #10b981;
+        }
+        
+        .feature-unavailable {
+            color: #ef4444;
+        }
+        
+        .feature-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-icon {
+            color: var(--light-text);
+            font-size: 14px;
+            cursor: help;
+        }
+        
+        .faq-section {
+            margin-top: 80px;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .faq-subtitle {
+            font-size: 16px;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 24px;
+        }
+        
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+        
+        .faq-answer {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-title {
+                font-size: 36px;
+            }
+            
+            .pricing-plans {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-plan {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .pricing-plan.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-plan.featured:hover {
+                transform: translateY(-5px);
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <nav class="navbar">
+        <img src="dolphin-2708695_1280.png" alt="Logo" class="logo">
+        <h3>DolphinAi</h3>
+       
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link ">Text to Image</a>
+            <a href="#" class="nav-link">Image to Image</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="developer.html" class="nav-link">Developer</a>
+        </div>
+        <div class="auth-buttons">
+            <button class="btn btn-login"><a href="login.html">Log In</a></button>
+            <button class="btn btn-signup"><a href="register.html">Register</a></button>
+        </div>
+        <button id="mobile-menu-btn" class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h1 class="pricing-title">Choose a plan that's right for you</h1>
+            <p class="pricing-subtitle">We believe DolphinAI should be accessible to all creators, no matter the size of your project.</p>
+        </div>
+        
+        <div class="pricing-plans">
+            <div class="pricing-plan">
+                <div class="plan-header">
+                    <h2 class="plan-name">Basic</h2>
+                    <p class="plan-description">Our most popular plan.</p>
+                </div>
+                <div class="plan-price-container">
+                    <div class="plan-price"><span>$</span>10</div>
+                    <div class="plan-billing">per month</div>
+                </div>
+                <div class="plan-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">100 image generations/month</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Standard resolution</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Basic editing tools</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Save up to 50 images</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Email support</div>
+                    </div>
+                </div>
+                <div class="plan-footer">
+                    <button class="plan-button standard-button">Get started</button>
+                </div>
+            </div>
+            
+            <div class="pricing-plan featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-header">
+                    <h2 class="plan-name">Business</h2>
+                    <p class="plan-description">Best for growing teams.</p>
+                </div>
+                <div class="plan-price-container">
+                    <div class="plan-price"><span>$</span>20</div>
+                    <div class="plan-billing">per month</div>
+                </div>
+                <div class="plan-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">500 image generations/month</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">HD resolution</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Advanced editing tools</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Save up to 500 images</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Priority support</div>
+                    </div>
+                </div>
+                <div class="plan-footer">
+                    <button class="plan-button featured-button">Get started</button>
+                </div>
+            </div>
+            
+            <div class="pricing-plan">
+                <div class="plan-header">
+                    <h2 class="plan-name">Enterprise</h2>
+                    <p class="plan-description">Best for large teams.</p>
+                </div>
+                <div class="plan-price-container">
+                    <div class="plan-price"><span>$</span>40</div>
+                    <div class="plan-billing">per month</div>
+                </div>
+                <div class="plan-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Unlimited image generations</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">4K resolution</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Premium editing suite</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">Unlimited storage</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <div class="feature-text">24/7 dedicated support</div>
+                    </div>
+                </div>
+                <div class="plan-footer">
+                    <button class="plan-button standard-button">Get started</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <div class="comparison-header">
+                <h2 class="comparison-title">Compare Plans</h2>
+                <p class="comparison-subtitle">See which plan is right for your needs</p>
+            </div>
+            
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>Basic</th>
+                            <th class="featured-column">Business</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Image Generations
+                                    <i class="fas fa-info-circle info-icon" title="Number of images you can generate per month"></i>
+                                </div>
+                            </td>
+                            <td>100/month</td>
+                            <td>500/month</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Maximum Resolution
+                                    <i class="fas fa-info-circle info-icon" title="Maximum resolution for generated images"></i>
+                                </div>
+                            </td>
+                            <td>1024×1024</td>
+                            <td>2048×2048</td>
+                            <td>4096×4096</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Storage
+                                    <i class="fas fa-info-circle info-icon" title="Number of images you can save in your collection"></i>
+                                </div>
+                            </td>
+                            <td>50 images</td>
+                            <td>500 images</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Advanced Prompt Controls
+                                    <i class="fas fa-info-circle info-icon" title="Fine-tune your prompts with advanced controls"></i>
+                                </div>
+                            </td>
+                            <td><i class="fas fa-times feature-unavailable"></i></td>
+                            <td><i class="fas fa-check feature-available"></i></td>
+                            <td><i class="fas fa-check feature-available"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Batch Processing
+                                    <i class="fas fa-info-circle info-icon" title="Generate multiple images at once"></i>
+                                </div>
+                            </td>
+                            <td><i class="fas fa-times feature-unavailable"></i></td>
+                            <td><i class="fas fa-check feature-available"></i></td>
+                            <td><i class="fas fa-check feature-available"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    API Access
+                                    <i class="fas fa-info-circle info-icon" title="Access to our API for integration"></i>
+                                </div>
+                            </td>
+                            <td><i class="fas fa-times feature-unavailable"></i></td>
+                            <td><i class="fas fa-times feature-unavailable"></i></td>
+                            <td><i class="fas fa-check feature-available"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Commercial Usage
+                                    <i class="fas fa-info-circle info-icon" title="Use generated images for commercial purposes"></i>
+                                </div>
+                            </td>
+                            <td>Limited</td>
+                            <td>Full</td>
+                            <td>Full</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="feature-info">
+                                    Support
+                                    <i class="fas fa-info-circle info-icon" title="Customer support options"></i>
+                                </div>
+                            </td>
+                            <td>Email</td>
+                            <td>Priority</td>
+                            <td>24/7 Dedicated</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <div class="faq-header">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Find answers to common questions about our plans and features</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I upgrade or downgrade my plan?</h3>
+                    <p class="faq-answer">Yes, you can upgrade or downgrade your plan at any time. Changes will take effect at the start of your next billing cycle.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you offer a free trial?</h3>
+                    <p class="faq-answer">Yes, we offer a 7-day free trial for all new users with access to basic features.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What payment methods do you accept?</h3>
+                    <p class="faq-answer">We accept all major credit cards, PayPal, and select cryptocurrencies.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I use the generated images commercially?</h3>
+                    <p class="faq-answer">Basic plan users have limited commercial rights. Business and Enterprise plans include full commercial usage rights.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What happens if I exceed my monthly limit?</h3>
+                    <p class="faq-answer">You can purchase additional image credits or upgrade to a higher plan to continue generating images.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is there a refund policy?</h3>
+                    <p class="faq-answer">We offer a 14-day money-back guarantee if you're not satisfied with our service.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DolphinAI</h3>
+                <p>Create stunning AI-generated images with just a text prompt. Unleash your creativity with our powerful image generation tool.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Text to Image</a></li>
+                    <li><a href="#">Image to Image</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 202 5DolphinAI Image Generator. All rights reserved. Developed by <a href="developer.html">Gaurav Singh Yadav</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>s

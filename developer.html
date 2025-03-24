@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer - Gaurav Singh Yadav</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .developer-container {
+            max-width: 1000px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+        
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            height: 160px;
+            position: relative;
+        }
+        
+      
+        
+        .profile-content {
+            padding: 90px 32px 32px;
+            text-align: center;
+        }
+        
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .profile-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+        
+        .profile-bio {
+            color: var(--light-text);
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+        
+        .profile-social {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .profile-skills {
+            margin-top: 32px;
+        }
+        
+        .skills-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: var(--background);
+            color: var(--text-color);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 24px;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        .back-link:hover {
+            color: var(--primary-light);
+        }
+        
+        .projects-section {
+            margin-top: 64px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .project-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 24px;
+        }
+        
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .project-description {
+            color: var(--light-text);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .project-tag {
+            background: var(--background);
+            color: var(--light-text);
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-link i {
+            margin-right: 4px;
+        }
+        
+        .project-link:hover {
+            color: var(--primary-light);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="dolphin-2708695_1280.png" alt="Logo" class="logo">
+        <h3>DolphinAi</h3>
+       
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link ">Text to Image</a>
+            <a href="#" class="nav-link">Image to Image</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="developer.html" class="nav-link">Developer</a>
+        </div>
+        <div class="auth-buttons">
+            <button class="btn btn-login"><a href="login.html">Log In</a></button>
+            <button class="btn btn-signup"><a href="register.html">Register</a></button>
+        </div>
+        <button id="mobile-menu-btn" class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div class="developer-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        
+        <div class="profile-card">
+            <div class="profile-header"></div>
+           
+            <div class="profile-content">
+                <h1 class="profile-name">Gaurav Singh Yadav</h1>
+                <div class="profile-title">Software Developer</div>
+                <p class="profile-bio">
+                    Passionate software developer with expertise in AI and web technologies. 
+                    I specialize in creating intuitive, user-friendly applications that leverage 
+                    cutting-edge technologies to solve real-world problems.
+                </p>
+                
+                <div class="profile-stats">
+                    <div class="stat">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                </div>
+                
+                <div class="profile-social">
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                </div>
+                
+                <div class="profile-skills">
+                    <h3 class="skills-title">Skills & Technologies</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Data Structure</span>
+                        <span class="skill-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="projects-section">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://cdn.pixabay.com/photo/2024/11/10/12/33/woman-9187743_1280.jpg" alt="AI Image Generator">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Image Generator</h3>
+                        <p class="project-description">
+                            A web application that uses AI to generate images from text descriptions.
+                            Built with modern web technologies and integrated with Hugging Face API.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">HTML/CSS</span>
+                            <span class="project-tag">AI</span>
+                            <span class="project-tag">API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://cdn.dribbble.com/userupload/8610557/file/original-a706374e1752a60eeb6312d73ea1d9ae.jpg" alt="Smart Home Dashboard">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Smart Home Dashboard</h3>
+                        <p class="project-description">
+                            A comprehensive dashboard for controlling and monitoring smart home devices.
+                            Features real-time updates and intuitive controls.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">IoT</span>
+                            <span class="project-tag">WebSockets</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://cdn.dribbble.com/userupload/17019014/file/original-5c0f1d3883438f3cf779bc9813d43bf4.png?resize=1504x1128&vertical=center" alt="E-Learning Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Learning Platform</h3>
+                        <p class="project-description">
+                            A full-featured e-learning platform with course management, video lessons,
+                            quizzes, and progress tracking.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Django</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AI Image Generator</h3>
+                <p>Transform your ideas into stunning visuals with the power of AI.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Text to Image</a></li>
+                    <li><a href="#">Image to Image</a></li>
+                    <li><a href="developer.html">Developer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 AI Image Generator. All rights reserved. Developed by <a href="developer.html">Gaurav Singh Yadav</a></p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+    <script src="theme.js"></script>
+
+</body>
+</html> 
