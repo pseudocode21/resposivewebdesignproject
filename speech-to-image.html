@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Image Creator | Create stunning visuals with AI</title>
+    <title>Speech to Image | Create AI images with your voice</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -41,28 +41,32 @@
       <div class="breadcrumb">
         <a href="#">Home</a>
         <span class="separator">›</span>
-        <span>Text to Image</span>
+        <span>Speech to Image</span>
       </div>
 
       <div class="hero-section">
         <div class="hero-content">
-          <h1 class="hero-title">Free Online AI Image Generator</h1>
+          <h1 class="hero-title">Create AI Images Using Your Voice</h1>
           <p class="hero-description">
-            Transform your ideas into stunning visuals with our AI-powered image
-            generator. Perfect for creating unique artwork, illustrations, and
-            designs for your projects.
+            Speak your vision and watch it come to life. Our speech-to-image
+            technology transforms your spoken words into stunning AI-generated
+            visuals - no typing required!
           </p>
           <ul class="feature-list">
-            <li><i class="fas fa-check"></i> No design skills required</li>
-            <li><i class="fas fa-check"></i> Multiple style options</li>
-            <li><i class="fas fa-check"></i> High-resolution outputs</li>
+            <li><i class="fas fa-check"></i> Hands-free image creation</li>
+            <li>
+              <i class="fas fa-check"></i> Works with most modern browsers
+            </li>
+            <li>
+              <i class="fas fa-check"></i> Perfect for accessibility needs
+            </li>
             <li><i class="fas fa-check"></i> Free to use</li>
           </ul>
         </div>
         <div class="hero-image">
           <img
-            src="https://cdn.pixabay.com/photo/2024/11/10/12/33/woman-9187743_1280.jpg"
-            alt="AI Generated Image"
+            src="https://cdn.pixabay.com/photo/2016/08/22/16/22/audio-1612218_1280.jpg"
+            alt="Voice Recognition"
           />
         </div>
       </div>
@@ -72,46 +76,59 @@
         <div class="steps">
           <div class="step">
             <div class="step-number">1</div>
-            <h3>Describe Your Vision</h3>
+            <h3>Click the Microphone</h3>
             <p>
-              Enter a detailed description of the image you want to create. The
-              more specific, the better!
+              Start recording by clicking the microphone button and allow
+              browser access.
             </p>
           </div>
           <div class="step">
             <div class="step-number">2</div>
-            <h3>Choose Your Style</h3>
+            <h3>Describe Your Image</h3>
             <p>
-              Select from various artistic styles to match your creative vision.
+              Clearly describe the image you want to create. Speak naturally and
+              include details.
             </p>
           </div>
           <div class="step">
             <div class="step-number">3</div>
             <h3>Generate & Download</h3>
             <p>
-              Our AI will create your image in seconds, ready to download and
-              use.
+              Review your transcribed prompt, generate your image, then download
+              and enjoy!
             </p>
           </div>
         </div>
       </div>
 
       <div class="prompt-section">
-        <h2>Create Your Image</h2>
+        <h2>Create Your Image With Voice</h2>
         <p class="section-description">
-          Type your prompt below and let our AI bring your ideas to life.
+          Click the microphone and describe the image you want to create.
         </p>
 
         <div class="prompt-container">
-          <div class="prompt-input">
-            <i class="fas fa-magic"></i>
-            <input
-              type="text"
-              id="prompt-input"
-              placeholder="Describe the image you want to create..."
-            />
+          <div class="voice-input-container">
+            <button id="voice-btn" class="voice-btn">
+              <i class="fas fa-microphone"></i>
+            </button>
+            <div class="prompt-input">
+              <i class="fas fa-magic"></i>
+              <input
+                type="text"
+                id="prompt-input"
+                placeholder="Your transcribed voice prompt will appear here..."
+                readonly
+              />
+            </div>
+            <button id="reset-btn" class="reset-btn">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
-          <button id="generate-btn" class="generate-btn">
+          <div class="speech-status" id="speech-status">
+            Click the microphone to start speaking
+          </div>
+          <button id="generate-btn" class="generate-btn" disabled>
             <i class="fas fa-wand-magic-sparkles"></i> Generate
           </button>
         </div>
@@ -180,128 +197,79 @@
         <div class="results-section" id="results-section" style="display: none">
           <h2 class="results-title">Your Generated Images</h2>
           <p class="results-description">
-            Here are your AI-generated images based on your prompt. You can
-            download them or make further edits.
+            Here are your AI-generated images based on your voice prompt. You
+            can download them or make further edits.
           </p>
           <div class="results-grid" id="results-container">
             <!-- Generated images will appear here -->
           </div>
         </div>
 
-        <div class="testimonials">
-          <h2>What Our Users Say</h2>
-          <div class="testimonial">
-            <div class="testimonial-content">
-              <p>
-                "This AI image generator has completely transformed my creative
-                process. I can now visualize my ideas instantly!"
-              </p>
-            </div>
-            <div class="testimonial-author">
-              <img
-                src="https://randomuser.me/api/portraits/men/45.jpg"
-                alt="User"
-              />
-              <div>
-                <h4>Vinay</h4>
-                <p>Graphic Designer</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial">
-            <div class="testimonial-content">
-              <p>
-                "As someone with no artistic skills, this tool has been a
-                game-changer for my marketing materials. So easy to use!"
-              </p>
-            </div>
-            <div class="testimonial-author">
-              <img
-                src="https://randomuser.me/api/portraits/men/32.jpg"
-                alt="User"
-              />
-              <div>
-                <h4>Rushikesh</h4>
-                <p>Small Business Owner</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial">
-            <div class="testimonial-content">
-              <p>
-                "The quality of images I can create with this tool is
-                incredible. It's become an essential part of my creative
-                toolkit."
-              </p>
-            </div>
-            <div class="testimonial-author">
-              <img
-                src="https://randomuser.me/api/portraits/women/68.jpg"
-                alt="User"
-              />
-              <div>
-                <h4>Anshika</h4>
-                <p>Content Creator</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="faq-section">
           <h2>Frequently Asked Questions</h2>
-          <div class="faq-grid">
-            <div class="faq-item">
-              <h3>How does the AI image generator work?</h3>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>What browsers support speech recognition?</h3>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
               <p>
-                Our AI image generator uses advanced machine learning models to
-                convert text descriptions into images. It analyzes your prompt
-                and generates visuals that match your description.
+                Speech recognition works best in Chrome, Edge, and Safari.
+                Firefox and some mobile browsers might have limited support.
               </p>
             </div>
-            <div class="faq-item">
-              <h3>Can I use the generated images commercially?</h3>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Why isn't my microphone working?</h3>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
               <p>
-                Yes, all images you generate are free to use for both personal
-                and commercial projects. You own the rights to your creations.
+                Make sure you've allowed microphone access in your browser
+                permissions. If issues persist, try refreshing the page or using
+                a different browser.
               </p>
             </div>
-            <div class="faq-item">
-              <h3>What makes a good prompt?</h3>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>How can I get better results with voice commands?</h3>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
               <p>
-                Detailed, specific prompts tend to yield better results. Include
-                information about style, mood, colors, and composition in your
-                description.
+                Speak clearly and include specific details about your desired
+                image. Describe colors, style, composition, and any important
+                elements you want to include.
               </p>
             </div>
-            <div class="faq-item">
-              <h3>Is there a limit to how many images I can generate?</h3>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Is my voice data stored?</h3>
+              <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer">
               <p>
-                Free users can generate up to 10 images per day. Premium
-                subscribers enjoy unlimited generations.
+                No, your voice data is processed locally in your browser and is
+                not stored on our servers. We only use the text transcription to
+                generate your images.
               </p>
             </div>
           </div>
         </div>
       </div>
-
-      <button class="theme-toggle" id="theme-toggle">
-        <i class="fas fa-moon"></i>
-      </button>
     </div>
+
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
           <h3>DolphinAI</h3>
           <p>
-            Create stunning AI-generated images with just a text prompt. Unleash
-            your creativity with our powerful image generation tool.
+            Creating the future of AI-powered image generation, one prompt at a
+            time.
           </p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-          </div>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
@@ -310,16 +278,6 @@
             <li><a href="index.html">Text to Image</a></li>
             <li><a href="speech-to-image.html">Speech to Image</a></li>
             <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="developer.html">Developer</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">API Documentation</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">Tutorials</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -330,16 +288,22 @@
             <li><a href="#">Cookie Policy</a></li>
           </ul>
         </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
       </div>
       <div class="footer-bottom">
-        <p>
-          © 202 5DolphinAI Image Generator. All rights reserved. Developed by
-          <a href="developer.html">Gaurav Singh Yadav</a>
-        </p>
+        <p>&copy; 2024 DolphinAI. All rights reserved.</p>
       </div>
     </footer>
 
-    <script src="script.js"></script>
     <script src="theme.js"></script>
+    <script src="speech-to-image.js"></script>
   </body>
 </html>
