@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image to Text | Generate descriptions from your images</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <img src="dolphin-2708695_1280.png" alt="Logo" class="logo" />
+      <h3>DolphinAi</h3>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link">Text to Image</a>
+        <a href="speech-to-image.html" class="nav-link">Speech to Image</a>
+        <a href="image-to-text.html" class="nav-link">Image to Text</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="developer.html" class="nav-link">Developer</a>
+      </div>
+      <div class="auth-buttons">
+        <button class="btn btn-login"><a href="login.html">Log In</a></button>
+        <button class="btn btn-signup">
+          <a href="register.html">Register</a>
+        </button>
+      </div>
+      <button id="mobile-menu-btn" class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span class="separator">›</span>
+        <span>Image to Text</span>
+      </div>
+
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">Image Description Generator</h1>
+          <p class="hero-description">
+            Upload any image and get an accurate AI-generated description.
+            Perfect for accessibility, content creation, or understanding what's
+            in your photos.
+          </p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Detailed image descriptions</li>
+            <li><i class="fas fa-check"></i> Works with most image formats</li>
+            <li><i class="fas fa-check"></i> Great for accessibility</li>
+            <li><i class="fas fa-check"></i> Free to use</li>
+          </ul>
+        </div>
+        <div class="hero-image">
+          <img
+            src="uploadImage.png"
+            alt="Example Image"
+          />
+        </div>
+      </div>
+
+      <div class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Upload Your Image</h3>
+            <p>
+              Select an image from your device. We support JPG, PNG, and WEBP
+              formats.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>AI Analysis</h3>
+            <p>
+              Our AI model will analyze the content of your image in seconds.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Get Description</h3>
+            <p>
+              Receive a detailed description of what's in your image, ready to
+              copy or share.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-section">
+        <h2>Generate Image Description</h2>
+        <p class="section-description">
+          Upload your image below and our AI will describe what it sees.
+        </p>
+
+        <div class="upload-container">
+          <div class="upload-area" id="upload-area">
+            <input type="file" id="image-upload" accept="image/*" hidden />
+            <div class="upload-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <p class="upload-text">Drag & Drop image here or</p>
+            <button class="upload-btn" id="upload-btn">Browse Files</button>
+            <p class="upload-info">Supports: JPG, PNG, WEBP (Max: 5MB)</p>
+          </div>
+
+          <div
+            class="preview-container"
+            id="preview-container"
+            style="display: none"
+          >
+            <div class="preview-header">
+              <h3>Image Preview</h3>
+              <button class="clear-btn" id="clear-btn">
+                <i class="fas fa-times"></i> Remove
+              </button>
+            </div>
+            <img id="preview-image" src="#" alt="Preview" />
+          </div>
+
+          <button id="generate-btn" class="generate-btn" disabled>
+            <i class="fas fa-magic"></i> Generate Description
+          </button>
+        </div>
+
+        <div class="loading-container">
+          <div class="loader"></div>
+          <p class="loading-text">Analyzing your image...</p>
+        </div>
+
+        <div class="results-section" id="results-section" style="display: none">
+          <h2 class="results-title">Image Description</h2>
+          <div class="description-container">
+            <div class="description-content" id="description-content">
+              <!-- Description will appear here -->
+            </div>
+            <div class="description-actions">
+              <button class="action-btn" id="copy-btn">
+                <i class="fas fa-copy"></i> Copy Text
+              </button>
+              <button class="action-btn" id="share-btn">
+                <i class="fas fa-share-alt"></i> Share
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h3>How does the Image-to-Text feature work?</h3>
+              <p>
+                This feature analyzes the uploaded image using AI and machine learning to extract either a descriptive caption (captioning) or readable text content (OCR) from the image.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>What types of images work best?</h3>
+              <p>
+                High-quality images with clear content yield the best results. For text extraction, images with good lighting and readable fonts are ideal.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Is my uploaded image stored or shared?</h3>
+              <p>
+                No, all image processing is handled securely. Uploaded images are not stored or shared and are discarded after generating the text.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Can it read handwritten text?</h3>
+              <p>
+                Yes, but accuracy may vary depending on the clarity and neatness of the handwriting. Printed text gives better results than cursive or messy writing.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Can I copy or download the extracted text?</h3>
+              <p>
+                Yes, once the text is extracted, you can easily copy or download it for your use.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Is there a file size limit for image uploads?</h3>
+              <p>
+                Yes, the maximum upload size is typically 5MB per image. Try compressing or resizing large files before uploading.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <footer class="footer">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>DolphinAI</h3>
+              <p>
+                Create stunning AI-generated images with just a text prompt. Unleash
+                your creativity with our powerful image generation tool.
+              </p>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+            <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Text to Image</a></li>
+                <li><a href="speech-to-image.html">Speech to Image</a></li>
+                <li><a href="image-to-text.html">Image to Text</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="developer.html">Developer</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>Resources</h3>
+              <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">API Documentation</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Tutorials</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3>Legal</h3>
+              <ul>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>
+              © 202 5DolphinAI Image Generator. All rights reserved. Developed by
+              <a href="developer.html">Gaurav Singh Yadav</a>
+            </p>
+          </div>
+        </footer>
+
+    <script src="theme.js"></script>
+    <script src="image-to-text.js"></script>
+  </body>
+</html>
