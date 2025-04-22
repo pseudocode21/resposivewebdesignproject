@@ -356,7 +356,7 @@ body {
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 0 24px;
+    padding: 10px 24px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s ease;
@@ -725,8 +725,12 @@ body {
     border-radius: var(--border-radius);
     padding: 24px;
     box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.faq-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
 .faq-item h3 {
     font-size: 18px;
     margin-bottom: 12px;
